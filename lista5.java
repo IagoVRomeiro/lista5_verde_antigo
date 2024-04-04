@@ -213,12 +213,15 @@ public class lista5 {
         ArquivoTextoLeitura txt = new ArquivoTextoLeitura("jogos.txt");
 
         String linha = txt.ler();
+        int qtdLista=0, qtdEncontrado=0;
+
         while (linha != null) {
 
             Jogo jogo = new Jogo();
             jogo.ler(linha);
             jogos.add(jogo);
             linha = txt.ler();
+            qtdLista++;
         }
 
         txt.fecharArquivo();
@@ -234,13 +237,14 @@ public class lista5 {
                 if (jogo.nomeDoJogo.equals(nomeDoJogo) && jogo.getAno() == ano && jogo.getEditora().equals(editora)
                         && jogo.getPlataforma().equals(plataforma)) {
                     MyIO.println(jogo.toString());
+                    qtdEncontrado++;
                     break;
                 }
             }
-
             linha = MyIO.readLine();
         }
 
+        MyIO.println("Quantidade de jogos não encontrados: ");
     }
 
 }
